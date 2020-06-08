@@ -3,17 +3,25 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "angular9": {
+    "chimata-shop": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "chimata-shop",
+      "schematics": {
+        "@schematics/angular:component": {
+          "prefix": "chimata-shop",
+          "style": "scss"
+        },
+        "@schematics/angular:directive": {
+          "prefix": "chimata-shop"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular9",
+            "outputPath": "dist/chimata-shop",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular9:build"
+            "browserTarget": "chimata-shop:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular9:build:production"
+              "browserTarget": "chimata-shop:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular9:build"
+            "browserTarget": "chimata-shop:build"
           }
         },
         "test": {
@@ -110,15 +118,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular9:serve"
+            "devServerTarget": "chimata-shop:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular9:serve:production"
+              "devServerTarget": "chimata-shop:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "angular9"
+  "defaultProject": "chimata-shop"
 }

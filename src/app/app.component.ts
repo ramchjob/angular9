@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './services/employee.service';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +7,12 @@ import { EmployeeService } from './services/employee.service';
 })
 
 export class AppComponent implements OnInit{
-  response : any;
-  employees: any;  
   constructor(
-    private employeeService: EmployeeService
+   
 ) {}
   
   async ngOnInit() {
     
-    this.response = await this.employeeService.getEmployees().toPromise();
-
-    if (this.response){
-      this.employees = this.response.data;
-    }
   }
   
 

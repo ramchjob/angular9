@@ -1,25 +1,9 @@
-<html>
-<h1>Data table</h1>
-<div class="container">
-  <table class="table table-striped">
-    <thead>
-        <tr>
-          <th>Id</th>
-          <th>Employee Name</th>
-          <th>Salary</th>
-          <th>Age</th>
-          <th>Image</th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let employee of employees">
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.employee_name }}</td>
-        <td>{{ employee.employee_salary }}</td>
-        <td>{{ employee.employee_age }}</td>
-        <td>{{ employee.profile_image }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-</html>
+<nav>
+    <ul>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+      <li><a routerLink="/orders">Orders</a></li>
+    </ul>
+  </nav>
+  
+  <router-outlet></router-outlet>
