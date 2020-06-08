@@ -4,10 +4,18 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "start-proxy": "node --max-http-header-size=80000 ./node_modules/@angular/cli/bin/ng serve --liveReload=false --proxyConfig=proxy.conf.js",
+    "start-proxy-local": "node --max-http-header-size=80000 ./node_modules/@angular/cli/bin/ng serve --liveReload=false --proxyConfig=proxy.conf.local.js",
     "test": "ng test",
+    "test-headless": "ng test --codeCoverage=true --sourceMap=true --watch=false --progress=false --browsers=ChromeNoSandboxHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint-fix": "ng lint --fix",
+    "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "e2e": "protractor",
+    "build": "ng build --progress=false",
+    "build-prod": "ng build --prod --progress=false",
+    "analyze": "ng build --stats-json && webpack-bundle-analyzer dist/stats.json",
+    "analyze-prod": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json"
   },
   "private": true,
   "dependencies": {
