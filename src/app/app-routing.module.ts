@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './dashboard/home/home.component';
-import { ProfileModule } from './profile/profile.module';
 import { OrdersModule } from './orders/orders.module';
+import { CustomersModule } from './customers/customers.module';
 
 const routes: Routes = [
     {
@@ -14,12 +14,12 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'profile',
-        loadChildren: () => ProfileModule,
-    },
-    {
         path: 'orders',
         loadChildren: () => OrdersModule,
+    },
+    {
+        path: 'customers',
+        loadChildren: () => CustomersModule,
     },
 ];
 
