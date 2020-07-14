@@ -18,11 +18,11 @@ export class CustomerListComponent implements OnInit {
     this.customerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.maxLength(128)]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email, ]]
     });
   }
 
-  async ngOnInit() {
+   async ngOnInit() {
     this.customers = await this.customerService.getCustomers().toPromise();
   }
 
@@ -36,6 +36,10 @@ export class CustomerListComponent implements OnInit {
       this.customers.push(newCustomer);
       this.customerForm.reset();
     
+}
+
+updateCustomer(event: Customer) {
+  console.log('Update customer clicked');
 }
 
 }

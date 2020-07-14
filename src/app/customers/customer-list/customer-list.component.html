@@ -20,7 +20,7 @@
                 <td>{{ customer.email }}</td>
                 <td>{{ customer.status }}</td>
                 <td> 
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  
+                    <button (click)="updateCustomer($event)" ><i class="fa fa-pencil-square-o" ></i>  </button>
                 </td>
             </tr>
         </table>
@@ -37,7 +37,7 @@
             <input type="text" formControlName="lastName">
           </label>
           <label>
-            Email
+            Email:
             <input type="text" formControlName="email">
           </label>
     </form>
