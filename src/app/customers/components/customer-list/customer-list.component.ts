@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Customer } from '../model/customer';
-import { CustomerService } from '../service/customer.service';
+import { Customer } from '../../model/customer';
+import { CustomerService } from '../../service/customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,6 +11,7 @@ import { CustomerService } from '../service/customer.service';
 export class CustomerListComponent implements OnInit {
 
   customers: Customer[] = [];
+  selectedCustomer: Customer;
 
   customerForm: FormGroup;
 
@@ -38,8 +39,8 @@ export class CustomerListComponent implements OnInit {
     
 }
 
-updateCustomer(event: Customer) {
-  console.log('Update customer clicked');
+updateCustomer(customer: Customer) {
+  this.selectedCustomer = customer;
 }
 
 }
