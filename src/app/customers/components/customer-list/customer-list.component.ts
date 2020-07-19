@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Customer } from '../../model/customer';
 import { CustomerService } from '../../service/customer.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-customer-list',
@@ -9,35 +12,30 @@ import { CustomerService } from '../../service/customer.service';
   styleUrls: ['./customer-list.component.scss']
 })
 export class CustomerListComponent implements OnInit {
-
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  
+  customerDataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>(); // DATA;
+  
   customers: Customer[] = [];
   selectedCustomer: Customer;
-
-  customerForm: FormGroup;
+  customerListColumns : string[] = ['id', 'firstName', 'lastName', 'email'];
 
   constructor(private formBuilder: FormBuilder, private customerService: CustomerService) {
-    this.customerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.maxLength(128)]],
-      email: ['', [Validators.required, Validators.email, ]]
-    });
+    
   }
 
    async ngOnInit() {
     this.customers = await this.customerService.getCustomers().toPromise();
+    this.buildDataSource();
+  }
+  buildDataSource() {
+    this.customerDataSource = new MatTableDataSource(this.customers);
+    this.customerDataSource.paginator = this.paginator;
+        this.customerDataSource.sort = this.sort;
   }
 
-  async onSubmit() {
-      const customer: Customer = <Customer>{};
-      customer.firstName = this.customerForm.controls['firstName'].value;
-      customer.lastName = this.customerForm.controls['lastName'].value;
-      customer.email = this.customerForm.controls['email'].value;
-      customer.status = 1;
-      const newCustomer: Customer = await this.customerService.createCustomer(customer).toPromise();
-      this.customers.push(newCustomer);
-      this.customerForm.reset();
-    
-}
+
 
 updateCustomer(customer: Customer) {
   this.selectedCustomer = customer;
