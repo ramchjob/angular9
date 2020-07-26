@@ -14,7 +14,7 @@ export class CreateEditCustomerComponent implements OnInit {
   @Output() newCustomer: EventEmitter<Customer> = new EventEmitter();
   customerForm: FormGroup;
 
-  constructor(private customerService: CustomerService) { 
+  constructor() { 
     this.customerForm = CustomerHelper.initializeCustomerForm();
   }
 
@@ -33,7 +33,7 @@ export class CreateEditCustomerComponent implements OnInit {
       status: 1
     }
     try {
-      await this.customerService.createCustomer(customer).toPromise();
+      console.log(JSON.stringify(customer))
       this.newCustomer.emit(customer);
     }
     catch (error){

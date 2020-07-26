@@ -47,4 +47,10 @@ updateCustomer(customer: Customer) {
   this.selectedCustomer = customer;
 }
 
+async createCustomer(customer: Customer){
+    let newCustomer: Customer = await this.customerService.createCustomer(customer).toPromise();
+    this.customers.push(newCustomer);
+    this.buildDataSource();
+}
+
 }
