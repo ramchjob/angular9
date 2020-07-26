@@ -1,1 +1,37 @@
-<p>create-edit-customer works!</p>
+<mat-card>
+
+
+    <form id="createTicketForm" [formGroup]="customerForm" fxLayout="column" fxLayoutGap="5px">
+        <mat-form-field>
+            <mat-label>First Name*</mat-label>
+            <input matInput formControlName="firstName">
+            <mat-error *ngIf="customerForm.controls.firstName?.errors?.required">
+                First Name is <strong>required</strong>.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name*</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="customerForm.controls.lastName?.errors?.required">
+                Last Name is <strong>required</strong>.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email*</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="customerForm.controls.email?.errors?.required">
+                Email is <strong>required</strong>.
+            </mat-error>
+        </mat-form-field>
+        <button #closeTicket mat-flat-button type="button" (click)="onCancel()">
+            Cancel
+        </button>
+        <button mat-flat-button type="submit" color="primary" (click)="saveCustomer()"
+            [disabled]="customerForm && !customerForm.valid">
+            Create
+        </button>
+    </form>
+
+
+
+</mat-card>

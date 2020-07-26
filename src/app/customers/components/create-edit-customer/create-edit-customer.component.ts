@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { CustomerHelper } from '../../helpers/customer-helper';
 
 @Component({
   selector: 'chimata-shop-create-edit-customer',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEditCustomerComponent implements OnInit {
 
-  constructor() { }
+  customerForm: FormGroup;
+
+  constructor() { 
+    CustomerHelper.initializeCustomerForm();
+  }
 
   ngOnInit(): void {
+  }
+
+  onCancel() {
+
+  }
+
+  saveCustomer() {
+    
   }
 
 }

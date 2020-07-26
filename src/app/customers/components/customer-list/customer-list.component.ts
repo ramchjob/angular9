@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Customer } from '../../model/customer';
 import { CustomerService } from '../../service/customer.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,9 +18,10 @@ export class CustomerListComponent implements OnInit {
   
   customers: Customer[] = [];
   selectedCustomer: Customer;
-  customerListColumns : string[] = ['id', 'firstName', 'lastName', 'email'];
+  customerListColumns : string[] = ['id', 'firstName', 'lastName', 'email', 'actions'];
+  editCustomerAction: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private customerService: CustomerService) {
+  constructor(private customerService: CustomerService) {
     
   }
 
@@ -35,7 +35,13 @@ export class CustomerListComponent implements OnInit {
         this.customerDataSource.sort = this.sort;
   }
 
+  deleteCustomer(customer: Customer){
 
+  }
+  editCustomer(customer: Customer){
+     this.selectedCustomer = customer;
+     this.editCustomerAction = false;
+  }
 
 updateCustomer(customer: Customer) {
   this.selectedCustomer = customer;
