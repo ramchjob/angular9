@@ -35,6 +35,7 @@ export class CreateEditCustomerComponent implements OnInit {
     try {
       console.log(JSON.stringify(customer))
       this.newCustomer.emit(customer);
+      this.customerForm.reset();
     }
     catch (error){
         console.log('Error' + error)
