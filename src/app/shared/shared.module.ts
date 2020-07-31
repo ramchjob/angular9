@@ -5,10 +5,9 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ConfirmationDialogComponent],
   imports: [
     CommonModule
-  ], 
-  entryComponents: [ConfirmationDialogComponent]
+  ]
 })
 export class SharedModule { }
